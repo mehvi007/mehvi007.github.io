@@ -3,125 +3,527 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mehveesh Chitranshi | Portfolio</title>
+    <title>Mehveesh Chitranshi | UI/UX Designer & Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+        * {
             margin: 0;
             padding: 0;
-            color: #333;
-            background-color: #f4f4f4;
+            box-sizing: border-box;
         }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #7e22ce;
+            --dark: #1f2937;
+            --light: #f8fafc;
+            --gray: #6b7280;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
         .container {
-            max-width: 1100px;
-            margin: auto;
-            overflow: hidden;
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 0 2rem;
         }
+
+        /* Header & Navigation */
         header {
-            background: #333;
-            color: #fff;
-            padding-top: 2rem;
-            min-height: 70vh;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
         }
-        header h1 {
-            font-size: 3rem;
-            margin-bottom: 0;
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
         }
-        header p {
+
+        .logo {
             font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
         }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 0 4rem;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
         .btn {
             display: inline-block;
-            background: #007bff;
-            color: #fff;
-            padding: 0.5rem 1.5rem;
-            border: none;
-            border-radius: 5px;
+            background: var(--primary);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
             text-decoration: none;
-            margin-top: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--primary);
         }
+
+        .btn:hover {
+            background: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            margin-left: 1rem;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        /* Sections */
         section {
-            padding: 2rem 0;
-            background: #fff;
-            margin: 1rem 0;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 5rem 0;
+            background: white;
         }
+
+        section:nth-child(even) {
+            background: var(--light);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        /* About */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .profile-img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Skills */
         .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .skills-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 0.5rem;
         }
+
         .skill-tag {
-            background: #e9ecef;
+            background: var(--primary);
+            color: white;
             padding: 0.5rem 1rem;
-            border-radius: 15px;
+            border-radius: 20px;
             font-size: 0.9rem;
+            font-weight: 500;
+            transition: transform 0.3s;
         }
+
+        .skill-tag:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-image {
+            height: 200px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .project-content p {
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
         footer {
+            background: var(--dark);
+            color: white;
             text-align: center;
             padding: 2rem 0;
-            background: #333;
-            color: #fff;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <div class="container">
-            <h1>Mehveesh Chitranshi</h1>
-            <p>B.S. Electronic Systems Student at IIT Madras | UI/UX Designer & Front-End Developer</p>
-            <a href="#contact" class="btn">Get In Touch</a>
-        </div>
+        <nav class="container">
+            <div class="logo">Mehveesh</div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
     </header>
 
-    <div class="container">
-        <section id="about">
-            <h2>About Me</h2>
-            <p>I'm a passionate developer and designer based in Lucknow, Uttar Pradesh. I love building user-centric digital experiences and am skilled in UI/UX design, user research, wireframing, and prototyping using Figma. I'm also proficient in front-end development with HTML, CSS, and JavaScript.</p>
-        </section>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>UI/UX Designer & Front-End Developer</h1>
+                <p>I create beautiful, functional digital experiences that users love. Currently studying Electronic Systems at IIT Madras.</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn">View My Work</a>
+                    <a href="#contact" class="btn btn-outline">Get In Touch</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <section id="skills">
-            <h2>Skills & Technologies</h2>
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+                <p>Get to know the person behind the code</p>
+            </div>
+            <div class="about-content">
+                <div>
+                    <div class="profile-img" style="background: linear-gradient(45deg, #667eea, #764ba2); height: 300px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; border-radius: 20px;">
+                        <i class="fas fa-user" style="font-size: 4rem;"></i>
+                    </div>
+                </div>
+                <div>
+                    <h3>Hello! I'm Mehveesh</h3>
+                    <p>A passionate UI/UX designer and front-end developer with a strong foundation in electronic systems. I bridge the gap between beautiful design and functional implementation.</p>
+                    <p>Currently pursuing my B.S. in Electronic Systems at IIT Madras, I bring a unique perspective to digital product design, combining technical knowledge with user-centered design principles.</p>
+                    <p>When I'm not coding or designing, you can find me exploring new technologies, participating in coding competitions, or learning about ethical hacking and FPGA development.</p>
+                    <div style="margin-top: 2rem;">
+                        <a href="https://www.linkedin.com/in/mehveesh-chitranshi-a4bb80370/" class="btn" target="_blank">
+                            <i class="fab fa-linkedin"></i> Connect on LinkedIn
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Skills</h2>
+                <p>The tools and technologies I work with</p>
+            </div>
             <div class="skills-container">
-                <span class="skill-tag">UI/UX Design</span>
-                <span class="skill-tag">User Research</span>
-                <span class="skill-tag">Figma</span>
-                <span class="skill-tag">Adobe XD</span>
-                <span class="skill-tag">HTML</span>
-                <span class="skill-tag">CSS</span>
-                <span class="skill-tag">JavaScript</span>
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">C</span>
-                <span class="skill-tag">Embedded C</span>
-                <span class="skill-tag">Responsive Web Design</span>
+                <div class="skill-category">
+                    <h3>Design & UX</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">UI/UX Design</span>
+                        <span class="skill-tag">User Research</span>
+                        <span class="skill-tag">Wireframing</span>
+                        <span class="skill-tag">Prototyping</span>
+                        <span class="skill-tag">Figma</span>
+                        <span class="skill-tag">Adobe XD</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Frontend Development</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Responsive Design</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Programming & Systems</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">C Programming</span>
+                        <span class="skill-tag">Embedded C</span>
+                        <span class="skill-tag">FPGA</span>
+                    </div>
+                </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="projects">
-            <h2>Projects</h2>
-            <p><strong>Note:</strong> This is a starter portfolio. Replace this section with your actual projects!</p>
-            <div class="project">
-                <h3>Project Title 1</h3>
-                <p>A brief description of your project. What it does, what technologies you used.</p>
-                <a href="#" class="btn">View Project</a>
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Projects</h2>
+                <p>Some of my recent work and accomplishments</p>
             </div>
-            <!-- Add more project divs here -->
-        </section>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>UI/UX Design Portfolio</h3>
+                        <p>A collection of my Figma prototypes and design projects showcasing user-centered design principles.</p>
+                        <a href="https://about.me/mehveesh" class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;" target="_blank">View Designs</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Responsive Web Design</h3>
+                        <p>freeCodeCamp certification projects including tribute pages, survey forms, and technical documentation.</p>
+                        <a href="https://www.freecodecamp.org/certification/fcc-b69773b3-1ea9-49d9-a5b3-6ffe667f6305/responsive-web-design" class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;" target="_blank">View Certificate</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Coding Competition</h3>
+                        <p>First prize winner in interschool coding competition 2022, demonstrating problem-solving skills.</p>
+                        <span class="skill-tag" style="background: var(--secondary);">Achievement</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <section id="contact">
-            <h2>Contact Me</h2>
-            <p>Feel free to reach out for collaborations or opportunities!</p>
-            <p>Email: <a href="mailto:mehvicoder007@gmail.com">mehvicoder007@gmail.com</a></p>
-            <p>LinkedIn: <a href="https://linkedin.com/in/mehveesh-chitranshi-a4bb80370" target="_blank">Mehveesh Chitranshi</a></p>
-            <p>Portfolio: <a href="https://about.me/mehveesh" target="_blank">about.me/mehveesh</a></p>
-        </section>
-    </div>
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+                <p>Let's work together on something amazing</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p>mehvicoder007@gmail.com</p>
+                    <a href="mailto:mehvicoder007@gmail.com" class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem; margin-top: 1rem;">Send Email</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <h3>LinkedIn</h3>
+                    <p>Connect professionally</p>
+                    <a href="https://www.linkedin.com/in/mehveesh-chitranshi-a4bb80370/" class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem; margin-top: 1rem;" target="_blank">Connect</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Portfolio</h3>
+                    <p>View my complete profile</p>
+                    <a href="https://about.me/mehveesh" class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem; margin-top: 1rem;" target="_blank">Visit</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Mehveesh Chitranshi. All rights reserved.</p>
+        <div class="container">
+            <div class="logo" style="color: white; margin-bottom: 1rem;">Mehveesh Chitranshi</div>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/mehveesh-chitranshi-a4bb80370/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://about.me/mehveesh" target="_blank"><i class="fas fa-globe"></i></a>
+                <a href="mailto:mehvicoder007@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>&copy; 2025 Mehveesh Chitranshi. All rights reserved.</p>
+        </div>
     </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+    </script>
 </body>
 </html>
